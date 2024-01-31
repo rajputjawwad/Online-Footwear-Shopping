@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Products - Footwear Shopping</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+ 
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="images/footwear.png" width="350px"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="product.html">Product</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="account.html">Account</a></li>
+                </ul>
+            </nav>
+            <a href="Cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+            <img src="images/menu.png" class="menu-icon">
+        </div> 
+    </div>
+     
+
+    <!-----------cart item details----->
+    <div class="small-container cart-page">
+        
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+            <tr class="item">
+                <td>
+                    <div class="cart-info">
+                        <img src="images/Product 1.png">
+                    <div>
+                        <p>AIR MAX 97 SE </p>
+                        <small>Price: ₹ 16,995</small>
+                        <br>
+                        <a href="">Remove</a>
+                    </div>
+                </div>        
+                </td>
+                <td><input class="qty" onchange="qtyChanged()" type="number" value="1"></td>
+                <td class="price">₹ 16,995</td>
+            </tr>
+            <tr class="item">
+                <td>
+                    <div class="cart-info">
+                        <img src="images/Product 2.png">
+                    <div>
+                        <p>AIR JORDAN 5 RETRO </p>
+                        <small>Price: ₹ 16,595</small>
+                        <br>
+                        <a href="">Remove</a>
+                    </div>
+                </div>        
+                </td>
+                <td><input class="qty" onchange="qtyChanged()"  type="number" value="1"></td>
+                <td class="price">₹ 16,595</td>
+            </tr>
+            <tr class="item">
+                <td>
+                    <div class="cart-info">
+                        <img src="images/Product 3.png">
+                    <div>
+                        <p>BOSTON STUSSY 'ANTHRACITE' </p>
+                        <small>Price: ₹ 8,990</small>
+                        <br>
+                        <a href="">Remove</a>
+                    </div>
+                </div>        
+                </td>
+                <td><input class="qty" onchange="qtyChanged()"  type="number" value="1"></td>
+                <td class="price">₹ 8,990</td>
+            </tr>
+            <tr class="item">
+                <td>
+                    <div class="cart-info">
+                        <img src="images/Product 4.png">
+                    <div>
+                        <p>PLEASURES X CROCS</p>
+                        <small>Price: ₹ 5,495</small>
+                        <br>
+                        <a href="">Remove</a>
+                    </div>
+                </div>        
+                </td>
+                <td><input class="qty"  onchange="qtyChanged()" type="number" value="1"></td>
+                <td class="price">₹ 5,495</td>
+            </tr>
+        </table>
+
+        <div class="total-price">
+
+            <table>
+                <tr>
+                    <td>Subtotal</td>
+                    <td id="subtotal-price">₹ 25000</td>
+                </tr>
+                <tr>
+                    <td>Tax</td>
+                    <td id="tax-price">₹ 1250</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td id="total-price">₹ 26250</td>
+                </tr>
+            </table>
+           
+        </div>
+        <p>
+            <a href="thank-you.html"class="btn">Checkout </a>
+            </p>
+        </div>
+    </div>
+
+
+
+<!----------footer-------->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Download Our App</h3>
+                <p>Download App for Android and ios mobile phone</p>
+                <div class="app-logo">
+                    <img src="images/play-store.png">
+                    <img src="images/app-store.png">
+                </div>
+            </div>
+            <div class="footer-col-2">
+                <img src="images/footwear.png">
+                <p>So many SHOES but only TWO FEET<br>
+                Copyright 2021 - Footwear-Shoppings</p>
+            </div>
+            <div class="row">
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Youtube</li>
+                    </ul>
+                </div>
+            </div> 
+    </div>
+    </div>
+</div>
+<script>
+function qtyChanged(){
+    var items = document.querySelectorAll(".item");
+var total = 0;
+    items.forEach((e)=>{
+        var price = e.querySelector(".price").textContent;
+        price = price.replace("₹","");
+        price = price.replace(",","");
+        price = parseInt(price);
+        var qty = e.querySelector(".qty").value;
+        total+=price*qty;
+    })
+    
+    document.querySelector("#subtotal-price").textContent=`₹${numberWithCommas(total)}`;
+    var tax = (total*18)/100;
+    document.querySelector("#tax-price").textContent = `₹${numberWithCommas(tax)}`
+    document.querySelector("#total-price").textContent = `₹${numberWithCommas(tax+total)}`
+    
+
+}
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+    </script>
+</body>
+</html>
